@@ -113,18 +113,19 @@ function renderCards() {
       (object) => `
         <article class="card">
           <img
-            class="card__image"
+            class="card__image js-open-image"
             src="${object.image}"
             alt="${object.title}"
+            data-full-image="${object.image}"
           />
 
           <div class="card__content">
             <p class="card__period">${object.period} · ${object.years}</p>
             <h3>${object.title}</h3>
 
-            <p><strong>Адрес:</strong> ${object.address}</p>
-            <p><strong>Архитекторы:</strong> ${object.architects}</p>
-            <p>${object.fullText}</p>
+            <p class="card__meta"><strong>Адрес:</strong> ${object.address}</p>
+            <p class="card__meta"><strong>Архитекторы:</strong> ${object.architects}</p>
+            <p class="card__text">${object.fullText}</p>
 
             <button class="card__map-button" data-object-id="${object.id}">
               Показать на карте
@@ -136,6 +137,7 @@ function renderCards() {
     .join("");
 
   initCardMapButtons();
+  initImageModal();
 }
 
 function initCardMapButtons() {
@@ -153,6 +155,68 @@ function initCardMapButtons() {
       showObjectOnMap(object);
     });
   });
+}
+
+function initImageModal() {
+  const images = document.querySelectorAll(".js-open-image");
+  const modal = document.querySelector("#image-modal");
+  const modalImage = document.querySelector("#image-modal-img");
+  const closeButton = document.querySelector("#image-modal-close");
+
+  if (!modal || !modalImage || !closeButton) {
+    console.log("Модальное окно не найдено в HTML");
+    return;
+  }
+
+  images.forEach((image) => {
+    image.addEventListener("click", () => {
+      modalImage.src = image.dataset.fullImage;
+      modalImage.alt = image.alt;
+      modal.classList.add("active");
+      document.body.classList.add("modal-open");
+    });
+  });
+
+  closeButton.addEventListener("click", closeImageModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeImageModal();
+    }
+  });
+}
+
+function closeImageModal() {
+  const modal = document.querySelector("#image-modal");
+  const modalImage = document.querySelector("#image-modal-img");
+
+  if (!modal || !modalImage) {
+    return;
+  }
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+  modalImage.src = "";
+  modalImage.alt = "";
+}
+function closeImageModal() {
+  const modal = document.querySelector("#image-modal");
+  const modalImage = document.querySelector("#image-modal-img");
+
+  if (!modal || !modalImage) {
+    return;
+  }
+
+  modal.classList.remove("active");
+  document.body.classList.remove("modal-open");
+  modalImage.src = "";
+  modalImage.alt = "";
 }
 
 function showObjectOnMap(object) {
