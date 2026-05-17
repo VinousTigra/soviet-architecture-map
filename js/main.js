@@ -6,6 +6,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let markers = [];
 let markersById = {};
+let zoneLayers = [];
 
 function getMarkerClass(period) {
   if (period === "Авангард") {
@@ -31,6 +32,27 @@ function createMarkerIcon(period) {
     html: `<span class="marker marker--${markerClass}"></span>`,
     iconSize: [24, 24],
     iconAnchor: [12, 12],
+  });
+}
+
+function renderZones() {
+  zoneLayers.forEach((zoneLayer) => zoneLayer.remove());
+  zoneLayers = [];
+
+  zones.forEach((zone) => {
+    const zoneLayer = L.polygon(zone.coords, {
+      color: zone.color,
+      fillColor: zone.color,
+      fillOpacity: 0.18,
+      weight: 2,
+      opacity: 0.8,
+    })
+      .addTo(map)
+      .bindPopup(
+        `<strong>${zone.title}</strong><br>${zone.period}<br>${zone.description}`,
+      );
+
+    zoneLayers.push(zoneLayer);
   });
 }
 
@@ -210,6 +232,7 @@ function initFilters() {
   });
 }
 
+renderZones();
 renderMarkers();
 renderCards();
 initTabs();

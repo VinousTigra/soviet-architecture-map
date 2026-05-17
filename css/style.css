@@ -74,7 +74,7 @@ h3 {
 }
 
 .logo {
-  font-size: 18px;
+  font-size: 48px;
   font-weight: 700;
 }
 
@@ -117,7 +117,7 @@ h3 {
 .map-layout {
   height: calc(100vh - 76px);
   display: grid;
-  grid-template-columns: 390px 1fr;
+  grid-template-columns: 480px 1fr;
 }
 
 .sidebar {
@@ -129,10 +129,11 @@ h3 {
 
 .eyebrow {
   margin: 0 0 10px;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.65;
+  opacity: 1;
 }
 
 h1,
@@ -193,6 +194,37 @@ li {
   height: 13px;
   border-radius: 50%;
   display: inline-block;
+}
+
+.legend-title {
+  margin: 10px 0 4px;
+  font-family: "Buyan", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.legend-zone {
+  width: 24px;
+  height: 13px;
+  border-radius: 999px;
+  display: inline-block;
+  opacity: 0.65;
+}
+
+.legend-zone--avant {
+  background: #b53a2e;
+}
+
+.legend-zone--stalin {
+  background: #b9822b;
+}
+
+.legend-zone--experiment {
+  background: #6b77d8;
+}
+
+.legend-zone--modern {
+  background: #2e5c9a;
 }
 
 .legend-dot--avant {
