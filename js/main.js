@@ -5,6 +5,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 let markers = [];
+let markersById = {};
 
 function getMarkerClass(period) {
   if (period === "Авангард") {
@@ -36,6 +37,7 @@ function createMarkerIcon(period) {
 function renderMarkers(filter = "all") {
   markers.forEach((marker) => marker.remove());
   markers = [];
+  markersById = {};
 
   const filteredObjects =
     filter === "all"
@@ -45,13 +47,16 @@ function renderMarkers(filter = "all") {
   filteredObjects.forEach((object) => {
     const marker = L.marker(object.coords, {
       icon: createMarkerIcon(object.period),
-    }).addTo(map);
+    })
+      .addTo(map)
+      .bindPopup(`<strong>${object.title}</strong><br>${object.period}`);
 
     marker.on("click", () => {
       renderSelectedObject(object);
     });
 
     markers.push(marker);
+    markersById[object.id] = marker;
   });
 }
 
@@ -98,11 +103,66 @@ function renderCards() {
             <p><strong>Адрес:</strong> ${object.address}</p>
             <p><strong>Архитекторы:</strong> ${object.architects}</p>
             <p>${object.fullText}</p>
+
+            <button class="card__map-button" data-object-id="${object.id}">
+              Показать на карте
+            </button>
           </div>
         </article>
       `,
     )
     .join("");
+
+  initCardMapButtons();
+}
+
+function initCardMapButtons() {
+  const buttons = document.querySelectorAll(".card__map-button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const objectId = Number(button.dataset.objectId);
+      const object = objects.find((item) => item.id === objectId);
+
+      if (!object) {
+        return;
+      }
+
+      showObjectOnMap(object);
+    });
+  });
+}
+
+function showObjectOnMap(object) {
+  const navButtons = document.querySelectorAll(".nav__button");
+  const tabs = document.querySelectorAll(".tab");
+
+  navButtons.forEach((button) => {
+    button.classList.remove("active");
+
+    if (button.dataset.tab === "map-section") {
+      button.classList.add("active");
+    }
+  });
+
+  tabs.forEach((tab) => {
+    tab.classList.remove("active");
+  });
+
+  document.querySelector("#map-section").classList.add("active");
+
+  setTimeout(() => {
+    map.invalidateSize();
+    map.setView(object.coords, 16);
+
+    renderSelectedObject(object);
+
+    const marker = markersById[object.id];
+
+    if (marker) {
+      marker.openPopup();
+    }
+  }, 100);
 }
 
 function initTabs() {
