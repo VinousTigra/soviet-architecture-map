@@ -2,9 +2,33 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Buyan";
+  src: url("../assets/fonts/BuyanRegular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Buyan";
+  src: url("../assets/fonts/BuyanBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Buyan";
+  src: url("../assets/fonts/BuyanThin.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Buyan", Arial, Helvetica, sans-serif;
   background: #f2eadc;
   color: #202020;
 }
