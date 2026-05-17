@@ -2,15 +2,131 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Карта советской архитектуры</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Советская архитектура Васильевского острова</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
-    <h1>Карта советской архитектуры</h1>
+    <header class="header">
+      <div class="logo">Советская архитектура В.О.</div>
 
-    <div id="cards-container"></div>
+      <nav class="nav">
+        <button class="nav__button active" data-tab="map-section">Карта</button>
+        <button class="nav__button" data-tab="summary-section">
+          Информационная сводка
+        </button>
+        <button class="nav__button" data-tab="about-section">О проекте</button>
+      </nav>
+    </header>
 
+    <main>
+      <section class="tab active" id="map-section">
+        <div class="map-layout">
+          <aside class="sidebar">
+            <p class="eyebrow">Интерактивная карта</p>
+            <h1>Советская архитектура Васильевского острова</h1>
+
+            <p class="intro-text">
+              Выберите объект на карте, чтобы увидеть краткую информацию:
+              период, годы строительства, адрес и архитекторов.
+            </p>
+
+            <div class="filters">
+              <button class="filter-button active" data-filter="all">
+                Все
+              </button>
+              <button class="filter-button" data-filter="Авангард">
+                Авангард
+              </button>
+              <button class="filter-button" data-filter="Сталинский ампир">
+                Сталинский ампир
+              </button>
+              <button class="filter-button" data-filter="Поздний модернизм">
+                Поздний модернизм
+              </button>
+            </div>
+
+            <div class="legend">
+              <div>
+                <span class="legend-dot legend-dot--avant"></span>Авангард
+              </div>
+              <div>
+                <span class="legend-dot legend-dot--stalin"></span>Сталинский
+                ампир
+              </div>
+              <div>
+                <span class="legend-dot legend-dot--modern"></span>Поздний
+                модернизм
+              </div>
+            </div>
+
+            <div id="selected-object" class="selected-object">
+              <p>Пока объект не выбран.</p>
+            </div>
+          </aside>
+
+          <div id="map-container"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="summary-section">
+        <div class="content-section">
+          <p class="eyebrow">Сводка</p>
+          <h2>Объекты на карте</h2>
+          <p class="intro-text">
+            Здесь собраны основные здания, вошедшие в карту проекта.
+          </p>
+
+          <div id="cards-container" class="cards"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="about-section">
+        <div class="content-section about">
+          <p class="eyebrow">О проекте</p>
+          <h2>Историко-культурный контекст</h2>
+
+          <p>
+            Проект посвящен советской архитектуре Васильевского острова: от
+            авангардных экспериментов 1920–1930-х годов до сталинского ампира и
+            позднего советского модернизма.
+          </p>
+
+          <p>
+            На карте представлены не все типы советской застройки, а выбранные
+            уникальные объекты, которые показывают развитие архитектурных идей,
+            градостроительных экспериментов и влияние мировых направлений.
+          </p>
+
+          <h3>Критерии отбора</h3>
+
+          <ul>
+            <li>архитектурная выразительность объекта;</li>
+            <li>связь с конкретным историческим этапом СССР;</li>
+            <li>значение для Васильевского острова;</li>
+            <li>наличие мирового культурного или архитектурного контекста;</li>
+            <li>возможность показать объект на карте как конкретную точку.</li>
+          </ul>
+
+          <h3>Источники</h3>
+
+          <p>
+            В основе проекта — материалы по архитектуре ленинградского
+            авангарда, советского модернизма, Василеостровскому району и
+            градостроительной истории западной части острова.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>

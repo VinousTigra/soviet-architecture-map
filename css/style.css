@@ -1,4 +1,286 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f3eee5;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2eadc;
+  color: #202020;
+}
+
+button {
+  font-family: inherit;
+}
+
+.header {
+  height: 76px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e9dcc8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav__button,
+.filter-button {
+  border: 1px solid #222;
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav__button:hover,
+.filter-button:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.nav__button.active,
+.filter-button.active {
+  background: #222;
+  color: #fff;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.map-layout {
+  height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: 390px 1fr;
+}
+
+.sidebar {
+  padding: 32px;
+  overflow-y: auto;
+  background: #f7efe2;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  margin-top: 32px;
+}
+
+.intro-text {
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.filters {
+  margin: 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.legend {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot--avant {
+  background: #b53a2e;
+}
+
+.legend-dot--stalin {
+  background: #b9822b;
+}
+
+.legend-dot--modern {
+  background: #2e5c9a;
+}
+
+#map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.selected-object {
+  margin-top: 20px;
+}
+
+.object-preview,
+.card {
+  background: #fffaf2;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.09);
+}
+
+.object-preview__image,
+.card__image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.object-preview__content,
+.card__content {
+  padding: 20px;
+}
+
+.object-preview__period,
+.card__period {
+  margin: 0 0 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.65;
+}
+
+.object-preview h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.object-preview p,
+.card p,
+.about p,
+.about li {
+  line-height: 1.5;
+}
+
+.content-section {
+  padding: 42px;
+}
+
+.cards {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.marker {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.marker--avant {
+  background: #b53a2e;
+}
+
+.marker--stalin {
+  background: #b9822b;
+}
+
+.marker--modern {
+  background: #2e5c9a;
+}
+
+.marker--default {
+  background: #666;
+}
+
+@media (max-width: 1000px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  #map-container {
+    height: 520px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    height: auto;
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sidebar,
+  .content-section {
+    padding: 24px;
+  }
+
+  h1,
+  h2 {
+    font-size: 28px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
