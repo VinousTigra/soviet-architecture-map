@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 @font-face {
   font-family: "Buyan";
   src: url("../assets/fonts/BuyanRegular.ttf") format("truetype");
@@ -26,15 +22,45 @@
   font-display: swap;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Buyan", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f2eadc;
   color: #202020;
 }
 
 button {
-  font-family: inherit;
+  font-family: "Buyan", Arial, Helvetica, sans-serif;
+}
+
+.logo,
+h1,
+h2,
+h3,
+.nav__button,
+.filter-button,
+.eyebrow {
+  font-family: "Buyan", Arial, Helvetica, sans-serif;
+}
+
+.logo,
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.nav__button,
+.filter-button {
+  font-weight: 400;
+}
+
+.eyebrow {
+  font-weight: 300;
 }
 
 .header {
@@ -66,6 +92,7 @@ button {
   border-radius: 999px;
   cursor: pointer;
   transition: 0.2s;
+  font-size: 18px;
 }
 
 .nav__button:hover,
@@ -102,7 +129,7 @@ button {
 
 .eyebrow {
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   opacity: 0.65;
@@ -115,23 +142,30 @@ h3 {
 }
 
 h1 {
-  font-size: 34px;
+  font-size: 44px;
   line-height: 1.05;
   margin-bottom: 18px;
 }
 
 h2 {
-  font-size: 34px;
+  font-size: 42px;
   margin-bottom: 12px;
 }
 
 h3 {
   margin-top: 32px;
+  font-size: 28px;
 }
 
 .intro-text {
   line-height: 1.5;
   opacity: 0.85;
+}
+
+p,
+li {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 .filters {
@@ -206,14 +240,15 @@ h3 {
 .object-preview__period,
 .card__period {
   margin: 0 0 8px;
-  font-size: 12px;
+  font-family: "Buyan", Arial, Helvetica, sans-serif;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   opacity: 0.65;
 }
 
 .object-preview h2 {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 12px;
 }
 
@@ -236,7 +271,7 @@ h3 {
 }
 
 .card h3 {
-  font-size: 22px;
+  font-size: 28px;
   margin-bottom: 12px;
 }
 
@@ -301,7 +336,11 @@ h3 {
 
   h1,
   h2 {
-    font-size: 28px;
+    font-size: 34px;
+  }
+
+  h3 {
+    font-size: 26px;
   }
 
   .cards {
