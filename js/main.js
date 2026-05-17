@@ -205,19 +205,6 @@ function closeImageModal() {
   modalImage.src = "";
   modalImage.alt = "";
 }
-function closeImageModal() {
-  const modal = document.querySelector("#image-modal");
-  const modalImage = document.querySelector("#image-modal-img");
-
-  if (!modal || !modalImage) {
-    return;
-  }
-
-  modal.classList.remove("active");
-  document.body.classList.remove("modal-open");
-  modalImage.src = "";
-  modalImage.alt = "";
-}
 
 function showObjectOnMap(object) {
   const navButtons = document.querySelectorAll(".nav__button");

@@ -252,34 +252,6 @@ li {
   background: #6b77d8;
 }
 
-.legend-zone--avant {
-  background: #b53a2e;
-}
-
-.legend-zone--stalin {
-  background: #b9822b;
-}
-
-.legend-zone--experiment {
-  background: #6b77d8;
-}
-
-.legend-zone--modern {
-  background: #2e5c9a;
-}
-
-.legend-dot--avant {
-  background: #b53a2e;
-}
-
-.legend-dot--stalin {
-  background: #b9822b;
-}
-
-.legend-dot--modern {
-  background: #2e5c9a;
-}
-
 #map-container {
   width: 100%;
   height: 100%;
