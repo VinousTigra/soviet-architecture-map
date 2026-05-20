@@ -29,7 +29,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #e1e2f0;
+  background: #e7edf0;
   color: #202020;
 }
 
@@ -65,7 +65,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #a3a8db;
+  background: #cbdde6;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -83,7 +83,7 @@ h3 {
 .nav__button,
 .filter-button {
   border: 1px solid #222;
-  background: #c4c6ea;
+  background: #cbdde6;
   padding: 10px 16px;
   border-radius: 999px;
   cursor: pointer;
@@ -119,7 +119,7 @@ h3 {
 .sidebar {
   padding: 32px;
   overflow-y: auto;
-  background: #e1e2f0;
+  background: #e7edf0;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -339,7 +339,7 @@ li {
   padding: 14px 18px;
   border: 1px solid #222;
   border-radius: 999px;
-  background: #c4c6ea;
+  background: #cbdde6;
   color: #222;
   font-family: "Buyan", Arial, Helvetica, sans-serif;
   font-size: 20px;
